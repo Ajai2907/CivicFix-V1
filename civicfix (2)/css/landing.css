@@ -1,0 +1,360 @@
+/* Landing Page Styles matching exact screenshots */
+
+/* Hero Section */
+.hero-wrapper {
+  padding: 60px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-pill-badge {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+}
+
+[data-theme="dark"] .hero-pill-badge {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+}
+
+.hero-title {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.12;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+
+.hero-title .highlight-blue {
+  color: #166fe5;
+}
+
+.hero-desc {
+  font-size: 1.12rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 540px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Hero Right 3D Visual Box */
+.hero-visual-card {
+  background: var(--bg-card);
+  border-radius: 36px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  position: relative;
+  text-align: center;
+}
+
+.hero-city-icon-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #e0eaff 0%, #c7d2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
+  margin-bottom: 24px;
+  font-size: 4rem;
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.hero-visual-caption {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.hero-visual-subcaption {
+  font-size: 0.92rem;
+  color: var(--text-light);
+}
+
+/* Statistics Section matching Screenshot 2 */
+.stats-section-wrapper {
+  padding: 40px 0 70px;
+}
+
+.stats-cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  padding: 38px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.stat-metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-metric-value {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #166fe5;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.stat-metric-label {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Section Header Generic */
+.section-title-center {
+  text-align: center;
+  margin-bottom: 54px;
+}
+
+.section-main-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.section-sub-heading {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* How CivicFix Works Section matching Screenshot 2 & 3 */
+.how-it-works-wrapper {
+  padding: 60px 0 90px;
+}
+
+.timeline-vertical-flow {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 60px;
+}
+
+/* Connecting vertical blue line */
+.timeline-vertical-flow::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 23px;
+  width: 4px;
+  background: #166fe5;
+  border-radius: 2px;
+}
+
+.timeline-step-row {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-step-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Circular Blue Dot on the vertical line */
+.timeline-step-node {
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #166fe5;
+  box-shadow: 0 4px 14px rgba(22, 111, 229, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  z-index: 2;
+}
+
+/* Timeline Card */
+.timeline-step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 28px 36px;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.timeline-step-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline-step-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.timeline-step-card p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Why Choose CivicFix Section matching Screenshot 4 */
+.features-section-wrapper {
+  padding: 60px 0 100px;
+}
+
+.features-grid-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.feature-large-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  padding: 38px 36px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.feature-large-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-large-card h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.feature-large-card p {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Live Map & Incident Feed Section */
+.live-map-section-wrapper {
+  padding: 40px 0 90px;
+}
+
+.live-map-card {
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.live-map-header {
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+#landing-map {
+  height: 440px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .stats-cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .footer-dark-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  .stats-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .timeline-vertical-flow {
+    padding-left: 45px;
+  }
+  .timeline-vertical-flow::before {
+    left: 15px;
+  }
+  .timeline-step-node {
+    left: -45px;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  .timeline-step-card {
+    padding: 20px 22px;
+  }
+  .footer-dark-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

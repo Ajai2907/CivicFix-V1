@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works - CivicFix</title>
+  <meta name="description" content="Step-by-step guide to reporting civic issues and tracking municipal field resolution." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/landing.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-circle">CF</div>
+        <div class="brand-text">
+          <span class="brand-name">CivicFix</span>
+          <span class="brand-subtitle">Building Better Nation</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/pages/report.html" class="nav-link">Report Issue</a></li>
+        <li><a href="/pages/track.html" class="nav-link">Track Complaint</a></li>
+        <li><a href="/pages/how-it-works.html" class="nav-link active">How It Works</a></li>
+        <li><a href="/pages/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+          🌙
+        </button>
+        <a href="/pages/login.html" class="btn btn-primary btn-sm">
+          Authority Portal
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container" style="max-width: 960px;">
+      
+      <div class="report-header">
+        <span class="badge badge-progress" style="margin-bottom: 10px;">Citizen & Authority Guide</span>
+        <h1>How CivicFix Works</h1>
+        <p>A seamless, transparent loop connecting citizens with ward field supervisors.</p>
+      </div>
+
+      <!-- Steps Detailed Cards -->
+      <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px;">
+        
+        <div class="card" style="display: flex; gap: 24px; align-items: flex-start;">
+          <div class="step-number" style="margin: 0; flex-shrink: 0;">1</div>
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Citizen Snaps Photo & Pins Location</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              When encountering a civic problem (such as a broken streetlight, pothole, or garbage pile), the citizen opens the web app on their smartphone or desktop. The camera or file picker attaches visual proof, and the GPS module automatically acquires exact coordinates (latitude and longitude).
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; gap: 24px; align-items: flex-start;">
+          <div class="step-number" style="margin: 0; flex-shrink: 0;">2</div>
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Gemini AI Analyzes Severity & Urgency</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              Our server-side AI model analyzes the submitted photo and text. It determines whether the issue poses an imminent hazard (Critical Severity like live wires or major water pipeline fractures), tags the department, and assigns initial SLA targets.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; gap: 24px; align-items: flex-start;">
+          <div class="step-number" style="margin: 0; flex-shrink: 0;">3</div>
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Ticket Generated & Placed in Authority Queue</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              The citizen receives an instant tracking ticket ID (e.g. <code>CMP-894210</code>). Simultaneously, the municipal command dashboard updates in real time with the new incident on the GIS map.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; gap: 24px; align-items: flex-start;">
+          <div class="step-number" style="margin: 0; flex-shrink: 0;">4</div>
+          <div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Field Crew Dispatched & Action Logged</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              Ward supervisors change the ticket status to <strong>In Progress</strong> and append notes (such as asphalt crew dispatched or valve isolated). When repair work is finished, the ticket is marked as <strong>Resolved</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Service Level Agreement (SLA) Reference Table -->
+      <div class="card" style="margin-bottom: 36px; padding: 28px;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 16px;">Target Service Level Commitments (SLAs)</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
+                <th style="padding: 10px 12px; color: var(--text-main);">Severity Level</th>
+                <th style="padding: 10px 12px; color: var(--text-main);">Example Incident</th>
+                <th style="padding: 10px 12px; color: var(--text-main);">Target Dispatch</th>
+                <th style="padding: 10px 12px; color: var(--text-main);">Target Resolution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px;"><span class="badge badge-critical">Critical</span></td>
+                <td style="padding: 12px;">Main pipe burst, live wire exposed, road cave-in</td>
+                <td style="padding: 12px; font-weight: 600;">Within 2 Hours</td>
+                <td style="padding: 12px; font-weight: 600;">24 Hours</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px;"><span class="badge badge-high">High</span></td>
+                <td style="padding: 12px;">Overflowing garbage dump, deep pothole on arterial road</td>
+                <td style="padding: 12px;">Within 6 Hours</td>
+                <td style="padding: 12px;">48 Hours</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px;"><span class="badge badge-medium">Medium</span></td>
+                <td style="padding: 12px;">Streetlights off, clogged lane drainage</td>
+                <td style="padding: 12px;">Within 24 Hours</td>
+                <td style="padding: 12px;">72 Hours</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px;"><span class="badge badge-low">Low</span></td>
+                <td style="padding: 12px;">Faded road marking, cosmetic tree pruning</td>
+                <td style="padding: 12px;">Within 48 Hours</td>
+                <td style="padding: 12px;">5-7 Days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="text-align: center; margin: 40px 0;">
+        <h3 style="font-size: 1.4rem; margin-bottom: 16px;">Ready to Report an Issue?</h3>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="/pages/report.html" class="btn btn-primary btn-lg">
+            📸 File a Civic Report Now
+          </a>
+          <a href="/pages/track.html" class="btn btn-secondary btn-lg">
+            🔍 Track Existing Ticket
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Dark Navy Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-dark-grid">
+        <div class="footer-dark-brand">
+          <h3>CivicFix</h3>
+          <p>Building Better Cities through smart complaint management.</p>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-dark-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/report.html">Report Issue</a></li>
+            <li><a href="/pages/track.html">Track Complaint</a></li>
+            <li><a href="/pages/how-it-works.html">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Contact</h4>
+          <ul class="footer-dark-links">
+            <li><a href="mailto:support@civicfix.in">Email : support@civicfix.in</a></li>
+            <li><span style="color: var(--footer-text);">Version 1.0</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-dark-bottom">
+        <p>© 2026 CivicFix. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

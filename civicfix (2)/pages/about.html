@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About CivicFix - Smart City Civic Resolution Platform</title>
+  <meta name="description" content="Learn about CivicFix (SIH25031) - Crowdsourced Civic Issue Reporting and Resolution System." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-circle">CF</div>
+        <div class="brand-text">
+          <span class="brand-name">CivicFix</span>
+          <span class="brand-subtitle">Building Better Nation</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/pages/report.html" class="nav-link">Report Issue</a></li>
+        <li><a href="/pages/track.html" class="nav-link">Track Complaint</a></li>
+        <li><a href="/pages/how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="/pages/about.html" class="nav-link active">About</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+          🌙
+        </button>
+        <a href="/pages/login.html" class="btn btn-primary btn-sm">
+          Authority Portal
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container" style="max-width: 920px;">
+      
+      <div class="report-header">
+        <span class="badge badge-progress" style="margin-bottom: 10px;">Smart City Project SIH25031</span>
+        <h1>About CivicFix</h1>
+        <p>A resilient, crowdsourced civic issue reporting and municipal resolution platform.</p>
+      </div>
+
+      <div class="card" style="margin-bottom: 32px; padding: 36px 32px;">
+        <h2 style="font-size: 1.6rem; margin-bottom: 14px;">The Problem & Vision</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">
+          Urban civic infrastructure maintenance frequently suffers from fragmented reporting channels, lack of precise geo-spatial tracking, slow triage, and minimal transparency for citizens. <strong>CivicFix (SIH25031)</strong> connects proactive citizens with municipal public works authorities via an intuitive web application powered by AI visual triage, interactive OpenStreetMap GIS positioning, and real-time resolution dashboards.
+        </p>
+
+        <h3 style="font-size: 1.3rem; margin: 28px 0 16px;">Core System Architecture</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-size: 1.5rem; margin-bottom: 6px;">🤖</div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 4px;">Gemini AI Triage</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Automatically classifies photo evidence, evaluates severity levels (Critical/High/Medium), and assigns tasks to the proper ward department.</p>
+          </div>
+
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-size: 1.5rem; margin-bottom: 6px;">📍</div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 4px;">GIS Geo-Tagging</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">One-touch browser GPS detection and interactive Leaflet map picker ensure pinpoint accuracy for road, water, or electrical crews.</p>
+          </div>
+
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-size: 1.5rem; margin-bottom: 6px;">💾</div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 4px;">SQLite Persistence</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Lightweight, self-contained relational database persists all complaints, ticket statuses, timestamps, and authority logs.</p>
+          </div>
+
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-size: 1.5rem; margin-bottom: 6px;">📊</div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 4px;">Command Analytics</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Chart.js powered breakdown of categories, SLA resolution timelines, and critical hazard hotspots for municipal executives.</p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.3rem; margin: 28px 0 16px;">Municipal Department Coverage</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; color: var(--text-muted);">
+          <li style="display: flex; align-items: center; gap: 10px;">🛣️ <strong>Roads & Highway Infrastructure:</strong> Potholes, road subsidence, surface erosion, damaged curbstones.</li>
+          <li style="display: flex; align-items: center; gap: 10px;">🗑️ <strong>Solid Waste Management:</strong> Overflowing community bins, illegal dumps, sanitation hazards.</li>
+          <li style="display: flex; align-items: center; gap: 10px;">💧 <strong>Water Supply & Sewerage Board:</strong> Main pipeline burst, drinking water leak, sewage backflow.</li>
+          <li style="display: flex; align-items: center; gap: 10px;">💡 <strong>Streetlighting & Electrical:</strong> Non-functional fixtures, exposed wiring, dark danger zones.</li>
+          <li style="display: flex; align-items: center; gap: 10px;">⚠️ <strong>Drainage & Public Safety:</strong> Missing manhole covers, storm drain clogging, severe waterlogging.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Dark Navy Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-dark-grid">
+        <div class="footer-dark-brand">
+          <h3>CivicFix</h3>
+          <p>Building Better Cities through smart complaint management.</p>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-dark-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/report.html">Report Issue</a></li>
+            <li><a href="/pages/track.html">Track Complaint</a></li>
+            <li><a href="/pages/how-it-works.html">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Contact</h4>
+          <ul class="footer-dark-links">
+            <li><a href="mailto:support@civicfix.in">Email : support@civicfix.in</a></li>
+            <li><span style="color: var(--footer-text);">Version 1.0</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-dark-bottom">
+        <p>© 2026 CivicFix. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

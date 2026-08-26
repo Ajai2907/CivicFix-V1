@@ -1,0 +1,68 @@
+:root {
+  /* Brand Colors matching screenshot */
+  --primary: #0066cc;
+  --primary-hover: #0052a3;
+  --primary-light: #e0eaff;
+  --primary-gradient: linear-gradient(135deg, #166fe5 0%, #0052cc 100%);
+  --accent-blue: #166fe5;
+
+  /* Neutral Tones */
+  --bg-main: #f4f7fb;
+  --bg-card: #ffffff;
+  --bg-muted: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-light: #edf2f7;
+
+  /* Text Colors */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Status Colors */
+  --status-pending: #f59e0b;
+  --status-progress: #0284c7;
+  --status-resolved: #10b981;
+  --status-critical: #ef4444;
+
+  /* Shadows matching screenshot soft cards */
+  --shadow-sm: 0 2px 8px rgba(0, 50, 120, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 50, 120, 0.06);
+  --shadow-lg: 0 16px 36px rgba(0, 50, 120, 0.08);
+  --shadow-xl: 0 24px 48px rgba(0, 50, 120, 0.12);
+
+  /* Rounded Corners */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* Footer */
+  --footer-bg: #09132b;
+  --footer-text: #94a3b8;
+  --footer-heading: #ffffff;
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --bg-main: #0b1120;
+  --bg-card: #131c31;
+  --bg-muted: #1e293b;
+  --border-color: #26354f;
+  --border-light: #1e293b;
+
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-light: #94a3b8;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+
+  --footer-bg: #060b17;
+}

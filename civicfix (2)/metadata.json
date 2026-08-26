@@ -1,0 +1,11 @@
+{
+  "name": "CivicFix",
+  "description": "Crowdsourced civic issue reporting and resolution system with AI severity analysis, GPS mapping, citizen tracking, and authority dashboard.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

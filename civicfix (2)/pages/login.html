@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authority Login - CivicFix</title>
+  <meta name="description" content="Municipal officer login portal for managing civic complaints and field operations." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+
+  <style>
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, rgba(248, 250, 252, 1) 90%);
+      padding: 24px;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      padding: 40px 32px;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-xl);
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .demo-creds-banner {
+      background: var(--primary-50);
+      border: 1px dashed var(--primary-200);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--primary-900);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="login-card animate-fade-in">
+      
+      <!-- Brand & Header -->
+      <div class="login-header">
+        <a href="/" class="brand-logo" style="justify-content: center; margin-bottom: 16px;">
+          <div class="brand-circle">CF</div>
+          <div class="brand-text" style="text-align: left;">
+            <span class="brand-name">CivicFix</span>
+            <span class="brand-subtitle">Building Better Nation</span>
+          </div>
+        </a>
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 6px;">Municipal Officer Portal</h2>
+        <p style="color: var(--text-light); font-size: 0.9rem;">Sign in to triage complaints and manage field crews</p>
+      </div>
+
+      <!-- Demo Credentials Helper Banner -->
+      <div class="demo-creds-banner">
+        <div style="font-weight: 700; margin-bottom: 4px;">🔑 Demo Authority Credentials:</div>
+        <div>Username: <strong style="font-family: monospace;">admin</strong> | Password: <strong style="font-family: monospace;">admin</strong></div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="authority-login-form">
+        
+        <div class="form-group">
+          <label class="form-label" for="login-username">Officer ID / Username</label>
+          <input 
+            type="text" 
+            id="login-username" 
+            class="form-control" 
+            value="admin" 
+            placeholder="admin" 
+            required 
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input 
+            type="password" 
+            id="login-password" 
+            class="form-control" 
+            value="admin" 
+            placeholder="••••••••" 
+            required 
+            autocomplete="current-password"
+          />
+        </div>
+
+        <div id="login-error-msg" style="display: none; background: #fee2e2; color: #b91c1c; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 16px;">
+          Invalid username or password. Use demo login: <strong>admin / admin</strong>.
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="login-submit-btn" style="width: 100%;">
+          🔐 Sign In to Command Dashboard
+        </button>
+
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-light);">
+        <a href="/">← Return to Citizen Public Portal</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('authority-login-form');
+      const userField = document.getElementById('login-username');
+      const passField = document.getElementById('login-password');
+      const errorBox = document.getElementById('login-error-msg');
+      const submitBtn = document.getElementById('login-submit-btn');
+
+      // Check if already logged in
+      if (localStorage.getItem('civicfix_authority_user')) {
+        window.location.href = '/pages/authority-dashboard.html';
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = userField.value.trim();
+        const password = passField.value.trim();
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Authenticating...';
+
+        setTimeout(() => {
+          // Demo authentication logic (accepts admin/admin or any officer account)
+          if ((username.toLowerCase() === 'admin' && password === 'admin') || (username && password === 'admin')) {
+            const userData = {
+              username: username,
+              name: username.toLowerCase() === 'admin' ? 'Chief Municipal Engineer' : `Officer ${username}`,
+              role: 'Ward Field Supervisor',
+              department: 'Public Works Command',
+              loginTime: new Date().toISOString()
+            };
+            localStorage.setItem('civicfix_authority_user', JSON.stringify(userData));
+            showToast('✓ Authentication successful! Loading dashboard...', 'success');
+            
+            setTimeout(() => {
+              window.location.href = '/pages/authority-dashboard.html';
+            }, 400);
+          } else {
+            errorBox.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '🔐 Sign In to Command Dashboard';
+          }
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

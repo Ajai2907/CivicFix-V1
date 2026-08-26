@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicFix - Building Better Nation</title>
+  <meta name="description" content="Report Civic Issues Smarter. Resolve Them Faster. Smart technology that connects citizens and authorities." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- CivicFix Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/landing.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar matching Screenshot 1 -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo" id="logo-link">
+        <div class="brand-circle">CF</div>
+        <div class="brand-text">
+          <span class="brand-name">CivicFix</span>
+          <span class="brand-subtitle">Building Better Nation</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="#statistics" class="nav-link">Statistics</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+          🌙
+        </button>
+        <a href="/pages/login.html" class="btn btn-primary btn-sm">
+          Authority Portal
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section matching Screenshot 1 -->
+    <section class="hero-wrapper">
+      <div class="container hero-grid">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-pill-badge animate-fade-in">
+            Let's Build a Better Nation All Together
+          </div>
+
+          <h1 class="hero-title animate-fade-in">
+            Report Civic Issues <span class="highlight-blue">Smarter.</span> Resolve Them <span class="highlight-blue">Faster.</span>
+          </h1>
+
+          <p class="hero-desc animate-fade-in">
+            CivicFix empowers citizens to report civic issues with precise GPS location, AI-powered prioritization, and transparent complaint tracking for faster resolution.
+          </p>
+
+          <div class="hero-buttons animate-fade-in">
+            <a href="/pages/report.html" class="btn btn-primary btn-lg" id="hero-report-btn">
+              Report an Issue
+            </a>
+            <a href="/pages/track.html" class="btn btn-outline btn-lg" id="hero-track-btn">
+              Track Complaint
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Box matching Screenshot 1 -->
+        <div class="hero-visual-card animate-fade-in">
+          <div class="hero-city-icon-wrapper">
+            🏙️
+          </div>
+          <div class="hero-visual-caption">Smart City Incident Hub</div>
+          <p class="hero-visual-subcaption">AI Triage • GPS Geotagging • Real-Time Dispatch</p>
+          
+          <!-- Live quick-status chip from real DB -->
+          <div style="margin-top: 20px; background: var(--bg-muted); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 10px 18px; display: flex; align-items: center; gap: 12px;">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">
+              <span id="hero-active-count">5</span> Active Incidents Triaged Live
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Statistics Section matching Screenshot 2 -->
+    <section class="stats-section-wrapper" id="statistics">
+      <div class="container">
+        <div class="stats-cards-row">
+          
+          <div class="stat-metric-card">
+            <div class="stat-metric-value" id="stat-count-resolved">0</div>
+            <div class="stat-metric-label">Complaints Resolved</div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="stat-metric-value" id="stat-count-rate">0%</div>
+            <div class="stat-metric-label">Resolution Rate</div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="stat-metric-value">24/7</div>
+            <div class="stat-metric-label">Complaint Monitoring</div>
+          </div>
+
+          <div class="stat-metric-card">
+            <div class="stat-metric-value">100%</div>
+            <div class="stat-metric-label">Location Accuracy</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How CivicFix Works Section matching Screenshot 2 & 3 -->
+    <section class="how-it-works-wrapper" id="how-it-works">
+      <div class="container">
+        
+        <div class="section-title-center">
+          <h2 class="section-main-heading">How CivicFix Works</h2>
+          <p class="section-sub-heading">A simple four-step process to solve civic issues efficiently.</p>
+        </div>
+
+        <div class="timeline-vertical-flow">
+          
+          <!-- Step 1 -->
+          <div class="timeline-step-row">
+            <div class="timeline-step-node">1</div>
+            <div class="timeline-step-card">
+              <h3>Report Issue</h3>
+              <p>Upload a photo, description and GPS location of the issue.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step-row">
+            <div class="timeline-step-node">2</div>
+            <div class="timeline-step-card">
+              <h3>AI Priority Engine</h3>
+              <p>AI analyzes severity. Water-related complaints receive the highest priority.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step-row">
+            <div class="timeline-step-node">3</div>
+            <div class="timeline-step-card">
+              <h3>Authority Action</h3>
+              <p>Authorities review prioritized complaints and resolve them faster.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step-row">
+            <div class="timeline-step-node">4</div>
+            <div class="timeline-step-card">
+              <h3>Email Notification</h3>
+              <p>Citizen receives an email after complaint submission and once it is resolved.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Why Choose CivicFix? Section matching Screenshot 4 -->
+    <section class="features-section-wrapper" id="features">
+      <div class="container">
+        
+        <div class="section-title-center">
+          <h2 class="section-main-heading">Why Choose CivicFix?</h2>
+          <p class="section-sub-heading">Smart technology that connects citizens and authorities.</p>
+        </div>
+
+        <div class="features-grid-two-col">
+          
+          <!-- Feature 1 -->
+          <div class="feature-large-card">
+            <h3>AI Priority</h3>
+            <p>Automatically prioritizes complaints based on severity.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-large-card">
+            <h3>GPS Location</h3>
+            <p>Capture accurate complaint location with one click.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-large-card">
+            <h3>Email Updates</h3>
+            <p>Receive complaint ID and completion updates instantly.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-large-card">
+            <h3>Smart Dashboard</h3>
+            <p>Authorities get organized and prioritized complaints.</p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-large-card">
+            <h3>Secure Access</h3>
+            <p>Protected login with automatic session logout.</p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-large-card">
+            <h3>Fast Resolution</h3>
+            <p>Speed up civic issue resolution through smart workflow.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Live Incident GIS Map (Included on entrance page so citizens can view & track live complaints!) -->
+    <section class="live-map-section-wrapper">
+      <div class="container">
+        <div class="section-title-center" style="margin-bottom: 36px;">
+          <h2 class="section-main-heading">Live Incident Map</h2>
+          <p class="section-sub-heading">Real-time geo-located issues across the municipal zone with live field updates.</p>
+        </div>
+
+        <div class="live-map-card">
+          <div class="live-map-header">
+            <div style="display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 0.95rem;">
+              <span>📍 Live City Incidents</span>
+              <span class="badge badge-critical">Critical</span>
+              <span class="badge badge-progress">In Progress</span>
+              <span class="badge badge-resolved">Resolved</span>
+            </div>
+            <a href="/pages/report.html" class="btn btn-primary btn-sm">
+              + Report Incident Here
+            </a>
+          </div>
+          <div id="landing-map"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dark Navy Footer matching Screenshot 5 -->
+  <footer class="footer-dark" id="contact">
+    <div class="container">
+      <div class="footer-dark-grid">
+        
+        <!-- Brand Column -->
+        <div class="footer-dark-brand">
+          <h3>CivicFix</h3>
+          <p>Building Better Cities through smart complaint management.</p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-dark-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-dark-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#statistics">Impact</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-dark-col">
+          <h4>Contact</h4>
+          <ul class="footer-dark-links">
+            <li><a href="mailto:support@civicfix.in">Email : support@civicfix.in</a></li>
+            <li><span style="color: var(--footer-text);">Version 1.0</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-dark-bottom">
+        <p>© 2026 CivicFix. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Function to fetch and update real-time statistics from SQLite database
+      async function refreshLiveStats() {
+        try {
+          const res = await fetch('/api/authority/summary');
+          const json = await res.json();
+          if (json.success && json.data) {
+            const d = json.data;
+            const resolvedEl = document.getElementById('stat-count-resolved');
+            const rateEl = document.getElementById('stat-count-rate');
+            const activeEl = document.getElementById('hero-active-count');
+
+            if (resolvedEl) {
+              resolvedEl.textContent = d.resolved !== undefined ? d.resolved : 0;
+            }
+            if (rateEl) {
+              rateEl.textContent = `${d.resolution_rate !== undefined ? d.resolution_rate : 0}%`;
+            }
+            if (activeEl) {
+              activeEl.textContent = d.total || 0;
+            }
+          }
+        } catch (e) {
+          console.warn('Could not fetch landing stats:', e);
+        }
+      }
+
+      // Initial fetch + real-time interval polling every 4 seconds
+      await refreshLiveStats();
+      setInterval(refreshLiveStats, 4000);
+
+      // 2. Initialize Leaflet Map with colored markers
+      try {
+        const mapEl = document.getElementById('landing-map');
+        if (mapEl && typeof L !== 'undefined') {
+          const map = L.map('landing-map').setView([28.6139, 77.2090], 13);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+          }).addTo(map);
+
+          const complaintsRes = await fetch('/api/complaints');
+          const compData = await complaintsRes.json();
+          if (compData.success && compData.complaints) {
+            compData.complaints.forEach(c => {
+              const lat = c.latitude || 28.6139;
+              const lng = c.longitude || 77.2090;
+
+              let color = '#f59e0b';
+              if (c.severity === 'Critical') color = '#ef4444';
+              else if (c.status === 'Resolved') color = '#10b981';
+              else if (c.status === 'In Progress') color = '#0ea5e9';
+
+              const customIcon = L.divIcon({
+                className: 'custom-map-pin',
+                html: `<div style="background-color: ${color}; width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
+              });
+
+              const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
+              marker.bindPopup(`
+                <div style="font-family: inherit;">
+                  <b style="color: var(--primary);">${escapeHtml(c.id)}</b><br>
+                  <strong>${escapeHtml(c.category)}</strong><br>
+                  <span style="font-size: 0.8rem; color: #64748b;">${escapeHtml(c.location)}</span><br>
+                  <span class="badge ${c.status === 'Resolved' ? 'badge-resolved' : c.status === 'In Progress' ? 'badge-progress' : 'badge-pending'}" style="margin-top: 4px;">${escapeHtml(c.status)}</span>
+                  <div style="margin-top: 6px;">
+                    <a href="/pages/track.html?id=${c.id}" style="font-size: 0.8rem; font-weight: 600; color: #166fe5;">Track Issue →</a>
+                  </div>
+                </div>
+              `);
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Error loading landing map:', err);
+      }
+    });
+  </script>
+</body>
+</html>

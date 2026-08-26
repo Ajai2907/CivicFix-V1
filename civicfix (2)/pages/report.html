@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report Civic Issue - CivicFix</title>
+  <meta name="description" content="Report a road defect, garbage dump, or water pipeline leak with photo and GPS location." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/report.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-circle">CF</div>
+        <div class="brand-text">
+          <span class="brand-name">CivicFix</span>
+          <span class="brand-subtitle">Building Better Nation</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/pages/report.html" class="nav-link active">Report Issue</a></li>
+        <li><a href="/pages/track.html" class="nav-link">Track Complaint</a></li>
+        <li><a href="/pages/how-it-works.html" class="nav-link">How It Works</a></li>
+        <li><a href="/pages/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+          🌙
+        </button>
+        <a href="/pages/login.html" class="btn btn-primary btn-sm">
+          Authority Portal
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container report-container">
+      
+      <!-- Page Header -->
+      <div class="report-header">
+        <h1>Report a Civic Issue</h1>
+        <p>Your report is analyzed by AI and routed directly to the municipal field maintenance team.</p>
+      </div>
+
+      <!-- Main Submission Form Container -->
+      <div class="card" id="form-card-container">
+        <form id="report-complaint-form" enctype="multipart/form-data">
+          
+          <!-- Category Selection -->
+          <div class="form-group">
+            <label class="form-label">
+              1. Select Issue Category <span class="required">*</span>
+            </label>
+            <div class="category-grid" id="category-grid">
+              <!-- Dynamically populated by JS from config.js -->
+            </div>
+            <input type="hidden" id="selected-category-input" name="category" value="Pothole & Roads" />
+          </div>
+
+          <!-- Description -->
+          <div class="form-group">
+            <label class="form-label" for="description-input">
+              2. Describe the Problem <span class="required">*</span>
+            </label>
+            <textarea 
+              id="description-input" 
+              name="description" 
+              class="form-control" 
+              placeholder="E.g., Deep pothole on right lane causing vehicle skidding during rains. Near street light pole #4."
+              required
+            ></textarea>
+            <div class="form-hint">Provide details like size, potential safety hazards, or time the defect has existed.</div>
+          </div>
+
+          <!-- Image Upload -->
+          <div class="form-group">
+            <label class="form-label">
+              3. Upload Evidence Photo <span style="font-weight: normal; color: var(--text-light);">(Recommended)</span>
+            </label>
+            
+            <div class="dropzone" id="image-dropzone">
+              <div class="dropzone-icon">📷</div>
+              <div class="dropzone-text">Click or drag & drop a photo here</div>
+              <div class="dropzone-subtext">JPG, PNG, or WEBP up to 5MB</div>
+              <input type="file" id="complaint-image-input" name="image" accept="image/*" style="display: none;" />
+            </div>
+
+            <div class="image-preview-container" id="image-preview-container" style="display: none;">
+              <img id="image-preview" src="" alt="Issue Preview" />
+              <button type="button" class="remove-image-btn" id="remove-image-btn" title="Remove image">✕</button>
+            </div>
+          </div>
+
+          <!-- Location & Interactive GPS Picker -->
+          <div class="form-group">
+            <label class="form-label">
+              4. Incident Location & GPS Pin <span class="required">*</span>
+            </label>
+            
+            <div class="location-box">
+              <div class="location-actions">
+                <input 
+                  type="text" 
+                  id="location-text-input" 
+                  name="location" 
+                  class="form-control" 
+                  placeholder="E.g., MG Road, Near Central Plaza, Sector 4"
+                  style="flex: 1;"
+                />
+                <button type="button" class="btn btn-secondary" id="detect-gps-btn">
+                  📍 Use My GPS
+                </button>
+              </div>
+
+              <!-- Mini Leaflet Map Pinpoint -->
+              <div class="location-map-container">
+                <div id="location-map"></div>
+              </div>
+
+              <div class="coordinates-badge">
+                <span>📍 <strong>Pinned Coordinates:</strong></span>
+                <span>Lat: <span id="lat-badge">28.61390</span></span>
+                <span>•</span>
+                <span>Lng: <span id="lng-badge">77.20900</span></span>
+                <span style="color: var(--text-light); font-size: 0.78rem;">(Drag pin or click map to adjust)</span>
+              </div>
+
+              <input type="hidden" id="latitude-input" name="latitude" value="28.6139" />
+              <input type="hidden" id="longitude-input" name="longitude" value="77.2090" />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div style="margin-top: 32px;">
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-complaint-btn" style="width: 100%;">
+              🚀 Submit Civic Report
+            </button>
+            <p style="text-align: center; font-size: 0.82rem; color: var(--text-light); margin-top: 10px;">
+              Your report will generate an instant tracking ticket and be queued for AI verification.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Success Result Card (Hidden until successful submission) -->
+      <div class="success-result-card" id="report-success-card">
+        <div class="success-icon-badge">✓</div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Complaint Registered Successfully!</h2>
+        <p style="color: var(--text-muted);">Thank you for helping improve our city. Your report has been triaged into the municipal queue.</p>
+
+        <div class="complaint-id-box">
+          <div>
+            <div style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">YOUR COMPLAINT TICKET ID</div>
+            <div class="complaint-id-text" id="success-complaint-id">CMP-XXXXXX</div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="copy-id-btn">
+            📋 Copy ID
+          </button>
+        </div>
+
+        <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; text-align: left; margin-bottom: 24px;">
+          <!-- Duplicate Warning Banner -->
+          <div id="duplicate-warning-banner" style="display: none; background: #fef3c7; border: 1px solid #f59e0b; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 14px; font-size: 0.88rem; color: #92400e;">
+            <strong>⚠️ Possible duplicate complaint detected.</strong>
+            <div id="duplicate-warning-text" style="margin-top: 4px; font-size: 0.82rem;"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="color: var(--text-light); font-size: 0.88rem;">Category:</span>
+            <strong id="success-category">Pothole & Roads</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="color: var(--text-light); font-size: 0.88rem;">AI Assessed Severity:</span>
+            <span id="success-severity" class="badge badge-medium">Medium</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="color: var(--text-light); font-size: 0.88rem;">Assigned Department:</span>
+            <strong id="success-department">Roads / Municipal Engineering</strong>
+          </div>
+          <div style="border-top: 1px solid var(--border-color); padding-top: 8px; margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+            <strong>AI Assessment:</strong> <span id="ai-summary-note">Automated triage completed. Field crew alerted.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a href="#" id="track-this-btn" class="btn btn-primary">
+            🔍 Track Resolution Status
+          </a>
+          <button type="button" class="btn btn-secondary" id="submit-another-btn">
+            + Report Another Issue
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Dark Navy Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-dark-grid">
+        <div class="footer-dark-brand">
+          <h3>CivicFix</h3>
+          <p>Building Better Cities through smart complaint management.</p>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-dark-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/report.html">Report Issue</a></li>
+            <li><a href="/pages/track.html">Track Complaint</a></li>
+            <li><a href="/pages/how-it-works.html">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-dark-col">
+          <h4>Contact</h4>
+          <ul class="footer-dark-links">
+            <li><a href="mailto:support@civicfix.in">Email : support@civicfix.in</a></li>
+            <li><span style="color: var(--footer-text);">Version 1.0</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-dark-bottom">
+        <p>© 2026 CivicFix. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/report.js"></script>
+</body>
+</html>
